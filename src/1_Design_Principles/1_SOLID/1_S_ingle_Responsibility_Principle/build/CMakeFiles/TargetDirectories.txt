@@ -1,3 +1,0 @@
-/home/schmidh/Git/CPP-Design-Patterns/src/1_Design_Principles/1_SOLID/1_S_ingle_Responsibility_Principle/build/CMakeFiles/rebuild_cache.dir
-/home/schmidh/Git/CPP-Design-Patterns/src/1_Design_Principles/1_SOLID/1_S_ingle_Responsibility_Principle/build/CMakeFiles/srp.dir
-/home/schmidh/Git/CPP-Design-Patterns/src/1_Design_Principles/1_SOLID/1_S_ingle_Responsibility_Principle/build/CMakeFiles/edit_cache.dir
