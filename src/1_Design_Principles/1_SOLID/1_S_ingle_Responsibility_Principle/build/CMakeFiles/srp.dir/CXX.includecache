@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/schmidh/Git/CPP-Design-Patterns/src/1_Design_Principles/1_SOLID/1_S_ingle_Responsibility_Principle/SRP.cpp
+fstream
+-
+string
+-
+vector
+-
+

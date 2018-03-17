@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/srp.dir/SRP.cpp.o  -o srp 
