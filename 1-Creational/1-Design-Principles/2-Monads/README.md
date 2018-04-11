@@ -1,0 +1,2 @@
+- See chapter 10 *Monads* in the Manning book *Functional Programming in C++*.
+- Basically *std::optional* with a transform function.

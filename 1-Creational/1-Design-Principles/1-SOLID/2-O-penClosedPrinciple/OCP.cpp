@@ -13,64 +13,69 @@ struct Product {
 
 // Not scalable
 struct ProductFilter {
-  typedef std::vector<Product*> Items;
+  typedef std::vector<Product> Items;
   static Items by_color(Items items, Color color) {
     Items result;
-    for (auto& i : items)
-      if (i->color == color) result.push_back(i);
+    for (auto& item : items)
+      if (item.color == color) result.push_back(item);
     return result;
   }
 
   static Items by_size(Items items, Size Size) {
     Items result;
     for (auto& i : items)
-      if (i->size == Size) result.push_back(i);
+      if (i.size == Size) result.push_back(i);
     return result;
   }
 
   static Items by_color_and_size(Items items, Color color, Size size) {
     Items result;
-    for (auto& i : items)
-      if (i->color == color && i->size == size) result.push_back(i);
+    for (auto& item : items)
+      if (item.color == color && item.size == size) result.push_back(item);
     return result;
   }
 };
 
-// Better: Specification pattern
+// Better: Specification pattern. Not an official GoF pattern but extensively used.
+// Reminds of generative programming (GP).
 template <typename T>
 struct ISpecification {
-  virtual bool is_satisfied(T* item) = 0;
+  virtual bool is_satisfied(T item) = 0;
 };
 
-template <typename T>
-struct IFilter {
-  virtual std::vector<T*> filter(std::vector<T*> items, ISpecification<T>& spec) = 0;
-};
-
-struct BetterFilter : IFilter<Product> {
-  typedef std::vector<Product*> Items;
-  std::vector<Product*> filter(std::vector<Product*> items, ISpecification<Product>& spec) override {
-    Items result;
-    for (auto& p : items)
-      if (spec.is_satisfied(p)) result.push_back(p);
-    return result;
-  }
-};
-
+// ColorSpecification is a product specification
 struct ColorSpecification : ISpecification<Product> {
   Color color;
 
   explicit ColorSpecification(const Color color) : color{color} {}
 
-  bool is_satisfied(Product* item) override { return item->color == color; }
+  bool is_satisfied(Product item) override { return item.color == color; }
 };
 
+// SizeSpecification is a product specification
 struct SizeSpecification : ISpecification<Product> {
   Size size;
 
   explicit SizeSpecification(const Size size) : size{size} {}
 
-  bool is_satisfied(Product* item) override { return item->size == size; }
+  bool is_satisfied(Product item) override { return item.size == size; }
+};
+
+template <typename T>
+struct IFilter {
+  typedef std::vector<T> Items;
+  virtual Items filter(Items items, ISpecification<T>& spec) = 0;
+};
+
+// BetterFilter is a product filter
+struct BetterFilter : IFilter<Product> {
+  typedef std::vector<Product> Items;
+  Items filter(Items items, ISpecification<Product>& spec) override {
+    Items result;
+    for (auto& productItem : items)
+      if (spec.is_satisfied(productItem)) result.push_back(productItem);
+    return result;
+  }
 };
 
 template <typename T>
@@ -80,7 +85,7 @@ struct AndSpecification : ISpecification<T> {
 
   AndSpecification(ISpecification<T>& first, ISpecification<T>& second) : first{first}, second{second} {}
 
-  bool is_satisfied(T* item) override { return first.is_satisfied(item) && second.is_satisfied(item); }
+  bool is_satisfied(T item) override { return first.is_satisfied(item) && second.is_satisfied(item); }
 };
 
 int main() {
@@ -88,19 +93,20 @@ int main() {
   Product tree{"Tree", Color::Green, Size::Large};
   Product house{"House", Color::Blue, Size::Large};
 
-  std::vector<Product*> all{&apple, &tree, &house};
+  std::vector<Product> all{apple, tree, house};
 
   BetterFilter bf;
   ColorSpecification green(Color::Green);
 
   auto green_things = bf.filter(all, green);
-  for (auto& x : green_things) std::cout << x->name << " is green" << std::endl;
+  for (auto& productItem : green_things) std::cout << productItem.name << " is green" << std::endl;
 
   SizeSpecification big(Size::Large);
+  // green_and_big is a product specification
   AndSpecification<Product> green_and_big{big, green};
 
   auto green_big_things = bf.filter(all, green_and_big);
-  for (auto& x : green_big_things) std::cout << x->name << " is green and big" << std::endl;
+  for (auto& productItem : green_big_things) std::cout << productItem.name << " is green and big" << std::endl;
 
   return 0;
 }

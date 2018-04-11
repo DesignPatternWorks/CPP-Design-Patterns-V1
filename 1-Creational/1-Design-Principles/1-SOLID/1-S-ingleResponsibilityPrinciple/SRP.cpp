@@ -11,6 +11,7 @@ struct Journal {
   void add(const std::string& entry) { entries.push_back(entry); }
 };
 
+// Do not put save method in Journal class but use a specialized class for saving stuff
 struct PersistenceManager {
   static void save(const Journal& j, const std::string& filename) {
     std::ofstream ofs(filename);
