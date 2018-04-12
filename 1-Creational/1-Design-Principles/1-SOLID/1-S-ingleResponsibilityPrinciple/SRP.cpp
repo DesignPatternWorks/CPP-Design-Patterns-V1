@@ -1,4 +1,7 @@
-﻿#include <fstream>
+﻿// Single Responsibility Principle
+// a class should only have a single responsibility
+
+#include <fstream>
 #include <string>
 #include <vector>
 

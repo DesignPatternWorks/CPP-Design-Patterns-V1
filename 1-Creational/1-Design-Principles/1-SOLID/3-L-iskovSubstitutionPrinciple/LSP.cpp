@@ -1,10 +1,10 @@
 // Liskov Substitution Principle
-
 // Objects in a program should be replaceable with instances of their subtypes
-// w/o altering the correctness of the program
+// without altering the correctness of the program
 
 #include <iostream>
 
+// This is a counter example!!!
 class Rectangle {
  protected:
   int width, height;
@@ -33,7 +33,10 @@ void process(Rectangle& r) {
   std::cout << "expect area = " << (w * 10) << ", got " << r.Area() << std::endl;
 }
 
-// Better use factory and decoration pattern and use a SetSize method instead of SetHeight and SetWidth.
+// Better alternatives:
+// use factory and decoration pattern and use a SetSize method instead of SetHeight and SetWidth.
+// factory and decoration pattern explained later in the course
+// eliminates Square class completely!
 struct RectangleFactory {
   static Rectangle CreateRectangle(int w, int h);
   static Rectangle CreateSquare(int size);
@@ -43,6 +46,7 @@ int main() {
   Rectangle r{5, 5};
   process(r);
 
+  // Square (subtype of Rectangle) violates the Liskov Substitution Principle
   Square s{5};
   process(s);
 
