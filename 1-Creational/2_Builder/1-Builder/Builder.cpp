@@ -29,7 +29,9 @@ struct HtmlElement {
     return oss.str();
   }
 
-  static unique_ptr<HtmlBuilder> build(string root_name) { return make_unique<HtmlBuilder>(root_name); }
+  static unique_ptr<HtmlBuilder> build(string root_name) {
+    return make_unique<HtmlBuilder>(root_name);
+  }
 };
 
 struct HtmlBuilder {
@@ -83,9 +85,9 @@ int main() {
   cout << builder.str() << endl;
 
   // Throws exception. Don't know why.
-  // auto builder2 = HtmlElement::build("ul")->add_child_2("li", "hello")->add_child_2("li", "world");
-  // cout << "\nBuilder (Pointer):" << endl;
-  // cout << builder2->str() << endl;
+  // auto builder2 = HtmlElement::build("ul")->add_child_2("li",
+  // "hello")->add_child_2("li", "world"); cout << "\nBuilder (Pointer):" << endl; cout <<
+  // builder2->str() << endl;
 
   return 0;
 }

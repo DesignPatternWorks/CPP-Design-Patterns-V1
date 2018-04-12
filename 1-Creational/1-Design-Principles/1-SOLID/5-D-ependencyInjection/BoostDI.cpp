@@ -13,7 +13,9 @@ struct ILogger {
 };
 
 struct ConsoleLogger : ILogger {
-  void Log(const std::string& s) override { std::cout << "LOG: " << s.c_str() << std::endl; }
+  void Log(const std::string& s) override {
+    std::cout << "LOG: " << s.c_str() << std::endl;
+  }
 };
 
 struct Engine {
@@ -31,11 +33,14 @@ struct Car {
   std::shared_ptr<Engine> engine;
   std::shared_ptr<ILogger> logger;
 
-  Car(const std::shared_ptr<Engine>& engine, const std::shared_ptr<ILogger>& i_logger) : engine{engine}, logger{i_logger} {
+  Car(const std::shared_ptr<Engine>& engine, const std::shared_ptr<ILogger>& i_logger)
+      : engine{engine}, logger{i_logger} {
     logger->Log("Created a car");
   }
 
-  friend std::ostream& operator<<(std::ostream& os, const Car& obj) { return os << "car with engine: " << *obj.engine; }
+  friend std::ostream& operator<<(std::ostream& os, const Car& obj) {
+    return os << "car with engine: " << *obj.engine;
+  }
 };
 
 int main() {

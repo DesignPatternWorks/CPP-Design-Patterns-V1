@@ -9,8 +9,8 @@ class PersonBuilder {
   Person p;
 
  protected:
-  // This is a reference to the object we are building up (defined in the private section).
-  // This will be seen and used by the subclasses.
+  // This is a reference to the object we are building up (defined in the private
+  // section). This will be seen and used by the subclasses.
   Person& person;
   explicit PersonBuilder(Person& person) : person{person} {}
 

@@ -34,9 +34,9 @@ void process(Rectangle& r) {
 }
 
 // Better alternatives:
-// use factory and decoration pattern and use a SetSize method instead of SetHeight and SetWidth.
-// factory and decoration pattern explained later in the course
-// eliminates Square class completely!
+// use factory and decoration pattern and use a SetSize method instead of SetHeight and
+// SetWidth. factory and decoration pattern explained later in the course eliminates
+// Square class completely!
 struct RectangleFactory {
   static Rectangle CreateRectangle(int w, int h);
   static Rectangle CreateSquare(int size);

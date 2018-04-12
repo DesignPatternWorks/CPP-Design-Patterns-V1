@@ -60,9 +60,12 @@ struct AndSpecification : ISpecification<T> {
   ISpecification<T>& first;
   ISpecification<T>& second;
 
-  AndSpecification(ISpecification<T>& first, ISpecification<T>& second) : first{first}, second{second} {}
+  AndSpecification(ISpecification<T>& first, ISpecification<T>& second)
+      : first{first}, second{second} {}
 
-  bool is_satisfied(T item) override { return first.is_satisfied(item) && second.is_satisfied(item); }
+  bool is_satisfied(T item) override {
+    return first.is_satisfied(item) && second.is_satisfied(item);
+  }
 };
 
 // ColorSpecification is a product specification
@@ -112,14 +115,16 @@ int main() {
   ColorSpecification green(Color::Green);
 
   auto green_things = bf.filter(all, green);
-  for (auto& product : green_things) std::cout << product.name << " is green" << std::endl;
+  for (auto& product : green_things)
+    std::cout << product.name << " is green" << std::endl;
 
   SizeSpecification big(Size::Large);
   // green_and_big is a product specification
   AndSpecification<Product> green_and_big{big, green};
 
   auto green_big_things = bf.filter(all, green_and_big);
-  for (auto& product : green_big_things) std::cout << product.name << " is green and big" << std::endl;
+  for (auto& product : green_big_things)
+    std::cout << product.name << " is green and big" << std::endl;
 
   return 0;
 }

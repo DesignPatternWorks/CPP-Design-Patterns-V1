@@ -40,18 +40,22 @@ struct IScanner {
 
 struct Printer : IPrinter {
   void print(std::vector<Document> docs) override {
-    for (auto& doc : docs) { std::cout << "Print:\t" << doc.content << std::endl; }
+    for (auto& doc : docs) {
+      std::cout << "Print:\t" << doc.content << std::endl;
+    }
   };
 };
 
 struct Scanner : IScanner {
   void scan(std::vector<Document> docs) override {
-    for (auto& doc : docs) { std::cout << "Scan:\t" << doc.content << std::endl; }
+    for (auto& doc : docs) {
+      std::cout << "Scan:\t" << doc.content << std::endl;
+    }
   };
 };
 
-// Now the peripheral manufacturer can implement the interfaces he actually provides and uses.
-// We use multiple inheritance to create a bigger interface from the small ones.
+// Now the peripheral manufacturer can implement the interfaces he actually provides and
+// uses. We use multiple inheritance to create a bigger interface from the small ones.
 struct IMachine : IPrinter, IScanner {};
 
 struct Machine : IMachine {
@@ -68,7 +72,8 @@ int main() {
   Printer printer;
   Scanner scanner;
   Machine machine(printer, scanner);
-  std::vector<Document> documents{Document(std::string("Hello")), Document(std::string("Hello"))};
+  std::vector<Document> documents{Document(std::string("Hello")),
+                                  Document(std::string("Hello"))};
   machine.print(documents);
   machine.scan(documents);
 }

@@ -28,6 +28,8 @@ int main() {
   journal.add("Second Entry");
   journal.add("Third Entry");
 
+  // Use a separate class/entity for saving.
+  // Saving journals is not a base responsibility of a journal.
   PersistenceManager().save(journal, "journal.txt");
 
   return 0;

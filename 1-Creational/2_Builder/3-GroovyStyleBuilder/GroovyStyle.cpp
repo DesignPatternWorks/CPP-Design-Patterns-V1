@@ -14,7 +14,8 @@ struct Tag {
   friend std::ostream& operator<<(std::ostream& os, const Tag& tag) {
     os << "<" << tag.name;
 
-    for (const auto& att : tag.attributes) os << " " << att.first << "=\"" << att.second << "\"";
+    for (const auto& att : tag.attributes)
+      os << " " << att.first << "=\"" << att.second << "\"";
 
     if (tag.children.size() == 0 && tag.text.length() == 0) {
       os << "/>" << std::endl;
@@ -33,24 +34,30 @@ struct Tag {
 
  protected:
   Tag(const std::string& name, const std::string& text) : name{name}, text{text} {}
-  Tag(const std::string& name, const std::vector<Tag>& children) : name{name}, children{children} {}
+  Tag(const std::string& name, const std::vector<Tag>& children)
+      : name{name}, children{children} {}
 };
 
 struct P : Tag {
   explicit P(const std::string& text) : Tag{"p", text} {}
-  // We can feed the initializer list (initializer_list<Tag>)into a vector (Tag::children is a vector<Tag>).
+  // We can feed the initializer list (initializer_list<Tag>)into a vector (Tag::children
+  // is a vector<Tag>).
   explicit P(std::initializer_list<Tag> children) : Tag("p", children) {}
 };
 
 struct IMG : Tag {
-  explicit IMG(const std::string& url) : Tag{"img", ""} { attributes.emplace_back(make_pair("src", url)); }
+  explicit IMG(const std::string& url) : Tag{"img", ""} {
+    attributes.emplace_back(make_pair("src", url));
+  }
 };
 }  // namespace html
 
 int main() {
   using namespace html;
 
-  std::cout << P{IMG{"http://pokemon.com/pikachu.png"}, P{IMG{"http://pokemon.com/pikachu.jpg"}}} << std::endl;
+  std::cout << P{IMG{"http://pokemon.com/pikachu.png"},
+                 P{IMG{"http://pokemon.com/pikachu.jpg"}}}
+            << std::endl;
 
   return 0;
 }
