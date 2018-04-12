@@ -14,6 +14,8 @@ SOLID
 Single Responsibility Principle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+A class should only have a single responsibility.
+
 .. literalinclude:: ../1-Creational/1-Design-Principles/1-SOLID/1-S-ingleResponsibilityPrinciple/SRP.cpp
    :language: cpp
    :caption: SRP.cpp
@@ -26,6 +28,8 @@ Single Responsibility Principle
 Open-Closed Principle
 ^^^^^^^^^^^^^^^^^^^^^
 
+Entities should be open for extension but closed for modification.
+
 .. literalinclude:: ../1-Creational/1-Design-Principles/1-SOLID/2-O-penClosedPrinciple/OCP.cpp
    :language: cpp
    :caption: OCP.cpp
@@ -36,6 +40,8 @@ Open-Closed Principle
 
 Liskov Substitution Principle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Objects should be replaceable with instances of their subtypes without altering program correctness.
 
 .. literalinclude:: ../1-Creational/1-Design-Principles/1-SOLID/3-L-iskovSubstitutionPrinciple/LSP.cpp
    :language: cpp
@@ -48,6 +54,8 @@ Liskov Substitution Principle
 Interface Segregation Principle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Many client-specific interfaces better than one general-purpose interface.
+
 .. literalinclude:: ../1-Creational/1-Design-Principles/1-SOLID/4-I-nterfaceSegregationPrinciple/ISP.cpp
    :language: cpp
    :caption: ISP.cpp
@@ -58,6 +66,20 @@ Interface Segregation Principle
 
 Dependency Inversion/Injection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dependencies should be abstract rather than concrete.
+
+**Dependency Inversion Principle**
+
+1. **High-level modules should not depend on low-level modules. Both should depend on abstractions.**
+   Example: reporting component should depend on a ConsoleLogger, but can depend on an ILogger.
+
+2. **Abstractions should not depend upon details. Details should depend upon abstractions.**
+   In other words, dependencies on interfaces and supertypes is better than dependencies on concrete types.
+
+**Inversion of Control (IoC)** – the actual process of creating abstractions and getting them to replace dependencies.
+
+**Dependency Injection** – use of software frameworks to ensure that a component’s dependencies are satisfied.
 
 .. literalinclude:: ../1-Creational/1-Design-Principles/1-SOLID/5-D-ependencyInjection/BoostDI.cpp
    :language: cpp

@@ -2,12 +2,12 @@
 #include <sstream>
 #include <string>
 #include <vector>
-using namespace std;
-
 #include "Person.h"
 #include "PersonAddressBuilder.h"
 #include "PersonBuilder.h"
 #include "PersonJobBuilder.h"
+
+using namespace std;
 
 int main() {
   Person p = Person::create()

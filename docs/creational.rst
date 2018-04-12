@@ -5,6 +5,28 @@ Creational Design Patterns
 Builder
 ^^^^^^^
 
+When piecewise object construction is complicated, provide an API for doing it succinctly.
+
+**Builder Examples**
+
+* Building a string out of substrings
+
+  * e.g. web server page rendering
+
+* Concatenate a single std::string
+
+  * my_text += boost::lexical_cast<string>(my_int);
+
+* printf("%s = %n", "meaning of life", 42);
+
+* Boost.Format
+
+  * format("%1%,x=%2% : %3%-th try") % "toto" % 40.23 % 50
+
+* Represent as OO structure and implement operator<< on an object graph
+
+
+
 Builder
 """""""
 

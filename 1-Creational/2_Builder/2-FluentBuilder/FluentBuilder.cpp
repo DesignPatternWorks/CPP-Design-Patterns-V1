@@ -64,15 +64,16 @@ unique_ptr<HtmlBuilder> HtmlElement::create(string root_name) {
 }
 
 int main() {
-  // add_child returns an HtmlBuilder. But due to the operator HtmlElement() in
-  // HtmlBuilder this will be converted to an HtmlElement!
+  // add_child returns an HtmlBuilder.
+  // Due to conversion operator HtmlElement() in HtmlBuilder this will be converted to an
+  // HtmlElement!
   HtmlElement htmlElement1 =
       HtmlElement::build("ul").add_child("li", "hello").add_child("li", "world");
   cout << htmlElement1.str() << endl;
 
+  return 0;
+
   // Crashes.
   // HtmlBuilder* htmlElement2 = HtmlElement::create("ul")->add_child_2("li",
   // "hello")->add_child_2("li", "world"); cout << htmlElement2->str() << endl;
-
-  return 0;
 }

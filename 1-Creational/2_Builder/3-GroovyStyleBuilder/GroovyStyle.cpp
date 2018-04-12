@@ -52,8 +52,9 @@ struct IMG : Tag {
 };
 }  // namespace html
 
+using namespace html;
+
 int main() {
-  using namespace html;
 
   std::cout << P{IMG{"http://pokemon.com/pikachu.png"},
                  P{IMG{"http://pokemon.com/pikachu.jpg"}}}

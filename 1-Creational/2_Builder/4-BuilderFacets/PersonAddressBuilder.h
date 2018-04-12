@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "PersonBuilder.h"
 
 class PersonAddressBuilder : public PersonBuilder {
   typedef PersonAddressBuilder Self;

@@ -58,6 +58,7 @@ struct HtmlBuilder {
 
 int main() {
   // <p>hello</p>
+  // handish: using out-of-the-box string concatenation
   auto text = "hello";
   string output;
   output += "<p>";
@@ -70,6 +71,7 @@ int main() {
   printf("<p>%s</p>\n", text);
 
   // <ul><li>hello</li><li>world</li></ul>
+  // a bit more comfortable with string streams
   string words[] = {"hello", "world"};
   ostringstream oss;
   oss << "<ul>\n";
@@ -78,16 +80,16 @@ int main() {
   cout << "\nOutput Stream:" << endl;
   printf("%s", oss.str().c_str());
 
-  // easier
+  // using a dedicated HTML builder
   HtmlBuilder builder{"ul"};
   builder.add_child("li", "hello").add_child("li", "world");
   cout << "\nBuilder:" << endl;
   cout << builder.str() << endl;
 
+  return 0;
+
   // Throws exception. Don't know why.
   // auto builder2 = HtmlElement::build("ul")->add_child_2("li",
   // "hello")->add_child_2("li", "world"); cout << "\nBuilder (Pointer):" << endl; cout <<
   // builder2->str() << endl;
-
-  return 0;
 }
