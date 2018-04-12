@@ -76,4 +76,6 @@ int main() {
                                   Document(std::string("Hello"))};
   machine.print(documents);
   machine.scan(documents);
+
+  return 0;
 }
