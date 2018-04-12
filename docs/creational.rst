@@ -14,7 +14,7 @@ Builder
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+`Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/2_Builder/1-Builder/Builder.cpp>`_
 
 Fluent Builder
 """"""""""""""
@@ -25,7 +25,7 @@ Fluent Builder
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code FluentBuilder.cpp <../../../2_Builder/2-FluentBuilder/FluentBuilder.cpp>`_
+`Full source code FluentBuilder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/2_Builder/2-FluentBuilder/FluentBuilder.cpp>`_
 
 Groovy Style Builder
 """"""""""""""""""""
@@ -36,7 +36,7 @@ Groovy Style Builder
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code GroovyStyle.cpp <../../../1-Creational/2_Builder/3-GroovyStyleBuilder/GroovyStyle.cpp>`_
+`Full source code GroovyStyle.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/2_Builder/3-GroovyStyleBuilder/GroovyStyle.cpp>`_
 
 Builder Facets
 """"""""""""""
@@ -47,7 +47,7 @@ Builder Facets
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Facets.cpp <../../../1-Creational/2_Builder/4-BuilderFacets/Facets.cpp>`_
+`Full source code Facets.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/2_Builder/4-BuilderFacets/Facets.cpp>`_
 
 Factories
 ^^^^^^^^^
@@ -61,7 +61,7 @@ Point Example
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
 
 Factory Method
 """"""""""""""
@@ -72,7 +72,7 @@ Factory Method
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
 
 Factory
 """""""
@@ -83,7 +83,7 @@ Factory
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
 
 Inner Factory
 """""""""""""
@@ -94,7 +94,7 @@ Inner Factory
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
 
 Abstract Factory
 """"""""""""""""
@@ -105,7 +105,7 @@ Abstract Factory
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
 
 Functional Factory
 """"""""""""""""""
@@ -116,8 +116,7 @@ Functional Factory
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
-
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
 
 Prototype
 ^^^^^^^^^
@@ -128,7 +127,7 @@ Prototype
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
 
 Singleton
 ^^^^^^^^^
@@ -139,4 +138,4 @@ Singleton
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code Builder.cpp <../../../1-Creational/1-Builder/Builder.cpp>`_
+.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_

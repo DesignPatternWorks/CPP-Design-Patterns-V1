@@ -20,7 +20,8 @@ Single Responsibility Principle
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code SRP.cpp <../../../1-Creational/1-Design-Principles/1-SOLID/1-S-ingleResponsibilityPrinciple/SRP.cpp>`_
+`Full source code SRP.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Design-Principles/1-SOLID/1-S-ingleResponsibilityPrinciple/SRP.cpp>`_
+
 
 Open-Closed Principle
 ^^^^^^^^^^^^^^^^^^^^^
@@ -31,7 +32,7 @@ Open-Closed Principle
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code OCP.cpp <../../../1-Creational/1-Design-Principles/1-SOLID/2-O-penClosedPrinciple/OCP.cpp>`_
+`Full source code OCP.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Design-Principles/1-SOLID/2-O-penClosedPrinciple/OCP.cpp>`_
 
 Liskov Substitution Principle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -42,7 +43,7 @@ Liskov Substitution Principle
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code LSP.cpp <../../../1-Creational/1-Design-Principles/1-SOLID/3-L-iskovSubstitutionPrinciple/LSP.cpp>`_
+`Full source code LSP.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Design-Principles/1-SOLID/3-L-iskovSubstitutionPrinciple/LSP.cpp>`_
 
 Interface Segregation Principle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -53,7 +54,7 @@ Interface Segregation Principle
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code ISP.cpp <../../../1-Creational/1-Design-Principles/1-SOLID/4-I-nterfaceSegregationPrinciple/ISP.cpp>`_
+`Full source code ISP.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Design-Principles/1-SOLID/4-I-nterfaceSegregationPrinciple/ISP.cpp>`_
 
 Dependency Inversion/Injection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -64,4 +65,4 @@ Dependency Inversion/Injection
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code BoostDI.cpp <../../../1-Creational/1-Design-Principles/1-SOLID/5-D-ependencyInjection/BoostDI.cpp>`_
+`Full source code BoostDI.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Design-Principles/1-SOLID/5-D-ependencyInjection/BoostDI.cpp>`_
