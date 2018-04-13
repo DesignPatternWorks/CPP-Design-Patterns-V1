@@ -20,6 +20,9 @@ target_compile_features(DependencyInjection PUBLIC cxx_std_14)
 add_executable(Builder ${CMAKE_SOURCE_DIR}/1-Creational/2_Builder/1-Builder/Builder.cpp)
 target_compile_features(Builder PUBLIC cxx_std_14)
 
+add_executable(LifeWithoutBuilder ${CMAKE_SOURCE_DIR}/1-Creational/2_Builder/1-Builder/LifeWithoutBuilder)
+target_compile_features(LifeWithoutBuilder PUBLIC cxx_std_14)
+
 add_executable(FluentBuilder ${CMAKE_SOURCE_DIR}/1-Creational/2_Builder/2-FluentBuilder/FluentBuilder.cpp)
 target_compile_features(FluentBuilder PUBLIC cxx_std_14)
 

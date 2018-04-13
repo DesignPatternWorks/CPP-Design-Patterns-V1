@@ -29,25 +29,15 @@ struct HtmlElement {
     return oss.str();
   }
   static HtmlBuilder build(string root_name);
-  static unique_ptr<HtmlBuilder> create(string root_name);
 };
 
 struct HtmlBuilder {
   explicit HtmlBuilder(const string& root_name) { root.name = root_name; }
 
-  // void to start with
   HtmlBuilder& add_child(const string& child_name, const string& child_text) {
     HtmlElement e{child_name, child_text};
     root.elements.emplace_back(e);
     return *this;
-  }
-
-  // pointer based
-  // I have the suspicion that his method is causing problems!
-  HtmlBuilder* add_child_2(const string& child_name, const string& child_text) {
-    HtmlElement e{child_name, child_text};
-    root.elements.emplace_back(e);
-    return this;
   }
 
   string str() { return root.str(); }
@@ -59,10 +49,6 @@ struct HtmlBuilder {
 
 HtmlBuilder HtmlElement::build(string root_name) { return HtmlBuilder{root_name}; }
 
-unique_ptr<HtmlBuilder> HtmlElement::create(string root_name) {
-  return make_unique<HtmlBuilder>(root_name);
-}
-
 int main() {
   // add_child returns an HtmlBuilder.
   // Due to conversion operator HtmlElement() in HtmlBuilder this will be converted to an
@@ -72,8 +58,4 @@ int main() {
   cout << htmlElement1.str() << endl;
 
   return 0;
-
-  // Crashes.
-  // HtmlBuilder* htmlElement2 = HtmlElement::create("ul")->add_child_2("li",
-  // "hello")->add_child_2("li", "world"); cout << htmlElement2->str() << endl;
 }

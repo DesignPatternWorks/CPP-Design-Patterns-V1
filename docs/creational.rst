@@ -5,9 +5,9 @@ Creational Design Patterns
 Builder
 ^^^^^^^
 
-When piecewise object construction is complicated, provide an API for doing it succinctly.
+When **piecewise** object construction is complicated, provide an API for doing it succinctly.
 
-**Builder Examples**
+**Builder Example. Building a string:**
 
 * Building a string out of substrings
 
@@ -26,9 +26,22 @@ When piecewise object construction is complicated, provide an API for doing it s
 * Represent as OO structure and implement operator<< on an object graph
 
 
+Life without Builder
+""""""""""""""""""""
+
+.. literalinclude:: ../1-Creational/2_Builder/1-Builder/LifeWithoutBuilder.cpp
+   :language: cpp
+   :caption: LifeWithoutBuilder.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code LifeWithoutBuilder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/2_Builder/1-Builder/LifeWithoutBuilder.cpp>`_
+
 
 Builder
 """""""
+
+A builder is a separate component with an API for building up a complex object. You can give the builder a public constructor or return it via a static function
 
 .. literalinclude:: ../1-Creational/2_Builder/1-Builder/Builder.cpp
    :language: cpp
@@ -41,6 +54,8 @@ Builder
 Fluent Builder
 """"""""""""""
 
+To make a fluent builder, return *this* or *\*this*.
+
 .. literalinclude:: ../1-Creational/2_Builder/2-FluentBuilder/FluentBuilder.cpp
    :language: cpp
    :caption: FluentBuilder.cpp
@@ -52,6 +67,8 @@ Fluent Builder
 Groovy Style Builder
 """"""""""""""""""""
 
+Initializer lists let you implement Groovy-style builders with ease.
+
 .. literalinclude:: ../1-Creational/2_Builder/3-GroovyStyleBuilder/GroovyStyle.cpp
    :language: cpp
    :caption: GroovyStyle.cpp
@@ -62,6 +79,8 @@ Groovy Style Builder
 
 Builder Facets
 """"""""""""""
+
+Different facets of an object can be built with different builders working in tandem.
 
 .. literalinclude:: ../1-Creational/2_Builder/4-BuilderFacets/Facets.cpp
    :language: cpp
