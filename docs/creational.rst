@@ -189,24 +189,86 @@ Use of mappings from strings to factory functions.
 
 `Full source code FunctionalFactory.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/3_Factories/6-FunctionalFactory/FunctionalFactory.cpp>`_
 
+`See also definition of class DrinkWithVolumeFactory <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/3_Factories/6-FunctionalFactory/DrinkFactory.h>`_
+
 Prototype
 ^^^^^^^^^
 
-.. literalinclude:: ../1-Creational/2_Builder/1-Builder/Builder.cpp
+Definition of Prototype: A partially or fully initialized object that you copy/clone and make use of.
+
+* Complicated objects (e.g. cars) aren’t designed from scratch
+
+  * They reiterate existing designs
+
+* An existing (partially constructed design) is a *Prototype*
+* We make a copy/clone of the prototype and customize it
+
+  * Requires ‘deep copy’ support
+  * Painful without metadata!
+
+* We make the cloning convenient (e.g. via a *Factory*)
+
+* To implement a prototype, partially construct an object and store it somewhere
+* Clone the prototype and then customize the instance
+* Ensure deep copying! (Be careful of shallow copies esp. with respect to pointers!)
+
+
+Prototype Factory
+"""""""""""""""""
+
+Use a factory to make prototypes more comfortable to use.
+
+.. literalinclude:: ../1-Creational/4-Prototype/1-PrototypeFactory/Prototype.cpp
    :language: cpp
-   :caption: Builder.cpp
+   :caption: Prototype.cpp
    :start-after: int main() {
    :end-before: return 0
 
-.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
+`Full source code Prototype.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/4-Prototype/1-PrototypeFactory/Prototype.cpp>`_
+
+Prototype with Boost Serialization
+""""""""""""""""""""""""""""""""""
+
+Use Boost Serialization for deep copying of protoype data.
+
+.. literalinclude:: ../1-Creational/4-Prototype/2-BoostSerialization/Serialization.cpp
+   :language: cpp
+   :caption: Serialization.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code Serialization.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/4-Prototype/2-BoostSerializaton/Serialization.cpp>`_
+
 
 Singleton
 ^^^^^^^^^
 
-.. literalinclude:: ../1-Creational/2_Builder/1-Builder/Builder.cpp
+Definition of Singleton: A component which is instantiated only once.
+
+*“When discussing which patterns to drop, we found that we still love them all. (Not really—I'm in favor of dropping Singleton. Its use is almost always a design smell.)” - Erich Gamma*
+
+* For some components it only makes sense to have one in the system
+
+  * Database repository
+  * Object factory
+
+* E.g. when the constructor call is expensive
+
+  * We only do it once
+  * We provide everyone with the same instance
+
+* Want to prevent anyone creating additional copies
+* Need to take care of lazy instantiation and multithreading
+
+* A safe singleton is easy: just make a static variable and return a reference to it
+* Singetons are difficult to test
+* Consider defining singleton lifetime with a DI container
+
+
+.. literalinclude:: ../1-Creational/5-Singleton/1-SingletonDatabase/SingletonDatabase.cpp
    :language: cpp
-   :caption: Builder.cpp
+   :caption: SingletonDatabase.cpp
    :start-after: int main() {
    :end-before: return 0
 
-.. `Full source code Builder.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/1-Builder/Builder.cpp>`_
+`Full source code SingletonDatabase.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/1-Creational/5-Singleton/1-SingletonDatabase/SingletonDatabase.cpp>`_

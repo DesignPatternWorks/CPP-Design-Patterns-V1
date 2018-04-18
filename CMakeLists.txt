@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 
 project(CPP-DESIGN-PATTERNS VERSION 0.0.1)
 
+find_package(Boost REQUIRED serialization)
+
 # SOLID
 add_executable(SingleResponsibilityPrinciple ${CMAKE_SOURCE_DIR}/1-Creational/1-Design-Principles/1-SOLID/1-S-ingleResponsibilityPrinciple/SRP.cpp)
 target_compile_features(SingleResponsibilityPrinciple PUBLIC cxx_std_14)
@@ -58,15 +60,32 @@ target_compile_features(AbstractFactory PUBLIC cxx_std_14)
 add_executable(FunctionalFactory ${CMAKE_SOURCE_DIR}/1-Creational/3_Factories/6-FunctionalFactory/FunctionalFactory.cpp)
 target_compile_features(FunctionalFactory PUBLIC cxx_std_14)
 
+# Prototypes
+
+add_executable(PrototypeFactory ${CMAKE_SOURCE_DIR}/1-Creational/4-Prototype/1-PrototypeFactory/Prototype.cpp)
+target_compile_features(PrototypeFactory PUBLIC cxx_std_14)
+
+add_executable(PrototypeSerialization ${CMAKE_SOURCE_DIR}/1-Creational/4-Prototype/2-BoostSerialization/Serialization.cpp)
+target_include_directories(PrototypeSerialization PUBLIC ${Boost_INCLUDE_DIRS})
+target_link_libraries(PrototypeSerialization ${Boost_LIBRARIES})
+target_compile_features(PrototypeSerialization PUBLIC cxx_std_14)
+
+# Singleton
+add_executable(SingletonDatabase ${CMAKE_SOURCE_DIR}/1-Creational/5-Singleton/1-SingletonDatabase/SingletonDatabase.cpp)
+target_include_directories(SingletonDatabase PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(SingletonDatabase PUBLIC cxx_std_14)
+
 add_custom_target(compile_commands ALL)
 
 add_custom_command(
   TARGET compile_commands POST_BUILD
   COMMAND touch ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json
-  COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json ${CMAKE_SOURCE_DIR})
+  COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json ${CMAKE_SOURCE_DIR}
+  COMMAND cp ${CMAKE_SOURCE_DIR}/1-Creational/5-Singleton/1-SingletonDatabase/capitals.txt ${CMAKE_CURRENT_BINARY_DIR})
 
 set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/journal.txt")
+  "${CMAKE_CURRENT_BINARY_DIR}/journal.txt"
+  "${CMAKE_CURRENT_BINARY_DIR}/capitals.txt")
 
 
 
