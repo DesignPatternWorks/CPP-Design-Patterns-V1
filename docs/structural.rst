@@ -96,8 +96,12 @@ Definition of Composite: A mechanism for treating individual (scalar) and compos
 * C++ has no special support for the idea of ‘enumeration’ of objects.
 * **Trick:** A single object can *masquerade* to become suitable for begin/end iteration.
 
-  * See Neural Network code which unfortunately compiles only under Windows.
+  * See Neural Network code which unfortunately compiles only under Microsoft Windows.
+  * `Link to Neurons code. <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/3-Composite/3-NeuralNetworks/neurons.cpp>`_
 
+  .. literalinclude:: ../2-Structural/3-Composite/3-NeuralNetworks/neurons.cpp
+     :language: cpp
+     :lines: 30-32
 
 Object Composition and Iteration
 """"""""""""""""""""""""""""""""
@@ -121,3 +125,59 @@ Geometric Shapes
 
 `Full source code graphics.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/3-Composite/2-GeometricShapes/graphics.cpp>`_
 
+Decorator
+^^^^^^^^^
+Definition of Decorator: Allows for adding behavior to individual objects without affecting the behavior of other objects of the same class.
+
+* Want to augment existing functionality.
+* Do not want to rewrite or alter existing code (Open-Closed Principle).
+* Want to keep new functionality separate (Single Responsibility Principle)
+* Need to be able to interact with existing structures
+
+* Functional decorators let you wrap functions with before/after code (e.g. for logging).
+* An aggregate decorator does not give you the underlying object’s features, but can be composed at runtime.
+* A decorator based on mixin inheritance is more flexible, exposes underlying object's features, but is only constructible at compile time because of implementation as C++ template functions.
+
+Function Decorator
+""""""""""""""""""
+
+.. literalinclude:: ../2-Structural/4-Decorator/1-FunctionDecorator/functionDecorator.cpp
+   :language: cpp
+   :caption: functionDecorator.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code functionDecorator.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/4-Decorator/1-FunctionDecorator/functionDecorator.cpp>`_
+
+Wrapping Decorator
+""""""""""""""""""
+
+.. literalinclude:: ../2-Structural/4-Decorator/2-WrappingDecorator/wrappingDecorator.cpp
+   :language: cpp
+   :caption: wrappingDecorator.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code wrappingDecorator.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/4-Decorator/2-WrappingDecorator/wrappingDecorator.cpp>`_
+
+Mixin Decorator
+"""""""""""""""
+
+.. literalinclude:: ../2-Structural/4-Decorator/3-MixinInheritance/mixinDecorator.cpp
+   :language: cpp
+   :caption: mixinDecorator.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code mixinDecorator.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/4-Decorator/3-MixinInheritance/mixinDecorator.cpp>`_
+
+Improved Decorator
+""""""""""""""""""
+
+.. literalinclude:: ../2-Structural/4-Decorator/4-UsabilityImprovements/improvedDecorator.cpp
+   :language: cpp
+   :caption: improvedDecorator.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code improvedDecorator.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/4-Decorator/4-UsabilityImprovements/improvedDecorator.cpp>`_

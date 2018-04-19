@@ -19,11 +19,11 @@ struct Neuron {
   }
 
   // legal in MSVC only
-  // template <>
-  // void connect_to<Neuron>(Neuron &other) {
-  //   out.push_back(&other);
-  //   other.in.push_back(this);
-  // }
+  template <>
+  void connect_to<Neuron>(Neuron &other) {
+    out.push_back(&other);
+    other.in.push_back(this);
+  }
 
   // connect_to(vector<Neuron>&)
 

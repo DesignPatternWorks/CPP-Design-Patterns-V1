@@ -110,6 +110,18 @@ target_compile_features(CompositeGraphics PUBLIC cxx_std_14)
 # add_executable(Neurons ${CMAKE_SOURCE_DIR}/2-Structural/3-Composite/3-NeuralNetworks/neurons.cpp)
 # target_compile_features(Neurons PUBLIC cxx_std_14)
 
+add_executable(FunctionDecorator ${CMAKE_SOURCE_DIR}/2-Structural/4-Decorator/1-FunctionDecorator/functionDecorator.cpp)
+target_compile_features(FunctionDecorator PUBLIC cxx_std_14)
+
+add_executable(WrapperDecorator ${CMAKE_SOURCE_DIR}/2-Structural/4-Decorator/2-WrappingDecorator/wrappingDecorator.cpp)
+target_compile_features(WrapperDecorator PUBLIC cxx_std_14)
+
+add_executable(MixinDecorator ${CMAKE_SOURCE_DIR}/2-Structural/4-Decorator/3-MixinInheritance/mixinDecorator.cpp)
+target_compile_features(MixinDecorator PUBLIC cxx_std_14)
+
+add_executable(ImprovedMixinDecorator ${CMAKE_SOURCE_DIR}/2-Structural/4-Decorator/4-UsabilityImprovements/improvedDecorator.cpp)
+target_compile_features(ImprovedMixinDecorator PUBLIC cxx_std_14)
+
 # Create compile database
 add_custom_target(compile_commands ALL)
 
