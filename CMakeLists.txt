@@ -20,6 +20,9 @@ target_compile_features(InterfaceSegregationPrinciple PUBLIC cxx_std_14)
 add_executable(DependencyInjection ${CMAKE_SOURCE_DIR}/1-Creational/1-Design-Principles/1-SOLID/5-D-ependencyInjection/BoostDI.cpp)
 target_compile_features(DependencyInjection PUBLIC cxx_std_14)
 
+# Creational Design Patterns
+# ==========================
+
 # Builder
 add_executable(LifeWithoutBuilder ${CMAKE_SOURCE_DIR}/1-Creational/2_Builder/1-LifeWithoutBuilder/LifeWithoutBuilder.cpp)
 target_compile_features(LifeWithoutBuilder PUBLIC cxx_std_14)
@@ -75,6 +78,39 @@ add_executable(SingletonDatabase ${CMAKE_SOURCE_DIR}/1-Creational/5-Singleton/1-
 target_include_directories(SingletonDatabase PUBLIC ${Boost_INCLUDE_DIRS})
 target_compile_features(SingletonDatabase PUBLIC cxx_std_14)
 
+# Structural Design Patterns
+# ==========================
+
+# Adapter
+add_executable(StackAdapter ${CMAKE_SOURCE_DIR}/2-Structural/1-Adapter/1-Stack/StructuralStack.cpp)
+target_compile_features(StackAdapter PUBLIC cxx_std_14)
+
+add_executable(StringAdapter ${CMAKE_SOURCE_DIR}/2-Structural/1-Adapter/2-String/StructuralString.cpp)
+target_include_directories(StringAdapter PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(StringAdapter PUBLIC cxx_std_14)
+
+# Bridge
+
+add_executable(PersonPIMPL
+  ${CMAKE_SOURCE_DIR}/2-Structural/2-Bridge/1-PimplIdiom/Person.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/2-Bridge/1-PimplIdiom/main.cpp)
+target_compile_features(PersonPIMPL PUBLIC cxx_std_14)
+
+add_executable(ShapeSizing ${CMAKE_SOURCE_DIR}/2-Structural/2-Bridge/2-ShapeSizing/ShapeSizing.cpp)
+target_compile_features(ShapeSizing PUBLIC cxx_std_14)
+
+# Composite
+
+add_executable(Composite ${CMAKE_SOURCE_DIR}/2-Structural/3-Composite/1-ObjectCompositionAndIteration/composite.cpp)
+target_compile_features(Composite PUBLIC cxx_std_14)
+
+add_executable(CompositeGraphics ${CMAKE_SOURCE_DIR}/2-Structural/3-Composite/2-GeometricShapes/graphics.cpp)
+target_compile_features(CompositeGraphics PUBLIC cxx_std_14)
+
+# add_executable(Neurons ${CMAKE_SOURCE_DIR}/2-Structural/3-Composite/3-NeuralNetworks/neurons.cpp)
+# target_compile_features(Neurons PUBLIC cxx_std_14)
+
+# Create compile database
 add_custom_target(compile_commands ALL)
 
 add_custom_command(
