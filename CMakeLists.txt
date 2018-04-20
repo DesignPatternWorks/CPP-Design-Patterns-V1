@@ -3,6 +3,16 @@ cmake_minimum_required(VERSION 3.0)
 project(CPP-DESIGN-PATTERNS VERSION 0.0.1)
 
 find_package(Boost REQUIRED serialization)
+find_package(glfw3)
+find_package(Freetype)
+find_package(OpenGL)
+find_package(GLEW)
+
+# message(STATUS "GLFW: ${GLFW_INCLUDE_DIRS}")
+# get_cmake_property(_variableNames VARIABLES)
+# foreach (_variableName ${_variableNames})
+#     message(STATUS "${_variableName}=${${_variableName}}")
+# endforeach()
 
 # SOLID
 add_executable(SingleResponsibilityPrinciple ${CMAKE_SOURCE_DIR}/1-Creational/1-Design-Principles/1-SOLID/1-S-ingleResponsibilityPrinciple/SRP.cpp)
@@ -122,6 +132,24 @@ target_compile_features(MixinDecorator PUBLIC cxx_std_14)
 add_executable(ImprovedMixinDecorator ${CMAKE_SOURCE_DIR}/2-Structural/4-Decorator/4-UsabilityImprovements/improvedDecorator.cpp)
 target_compile_features(ImprovedMixinDecorator PUBLIC cxx_std_14)
 
+# Façade
+
+add_executable(BloomTerminal
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/Area.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/Bloom.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/MenuBar.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/ShaderUtils.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/TextBuffer.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/TextRenderer.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/TextureManager.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/Util.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/Viewport.cpp
+  ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/Window.cpp)
+target_include_directories(BloomTerminal PUBLIC ${FREETYPE_INCLUDE_DIR_ft2build} ${FREETYPE_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS})
+target_link_libraries(BloomTerminal glfw ${FREETYPE_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+target_compile_features(BloomTerminal PUBLIC cxx_std_14)
+
+
 # Create compile database
 add_custom_target(compile_commands ALL)
 
@@ -129,11 +157,17 @@ add_custom_command(
   TARGET compile_commands POST_BUILD
   COMMAND touch ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json
   COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json ${CMAKE_SOURCE_DIR}
-  COMMAND cp ${CMAKE_SOURCE_DIR}/1-Creational/5-Singleton/1-SingletonDatabase/capitals.txt ${CMAKE_CURRENT_BINARY_DIR})
+  COMMAND cp ${CMAKE_SOURCE_DIR}/1-Creational/5-Singleton/1-SingletonDatabase/capitals.txt ${CMAKE_CURRENT_BINARY_DIR}
+  COMMAND cp ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/consola.ttf ${CMAKE_CURRENT_BINARY_DIR}
+  COMMAND cp ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/text.f.glsl ${CMAKE_CURRENT_BINARY_DIR}
+  COMMAND cp ${CMAKE_SOURCE_DIR}/2-Structural/5-Façade/1-Bloom/text.v.glsl ${CMAKE_CURRENT_BINARY_DIR})
 
 set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
   "${CMAKE_CURRENT_BINARY_DIR}/journal.txt"
-  "${CMAKE_CURRENT_BINARY_DIR}/capitals.txt")
+  "${CMAKE_CURRENT_BINARY_DIR}/capitals.txt"
+  "${CMAKE_CURRENT_BINARY_DIR}/consola.ttf"
+  "${CMAKE_CURRENT_BINARY_DIR}/text.f.glsl"
+  "${CMAKE_CURRENT_BINARY_DIR}/text.v.glsl")
 
 
 
