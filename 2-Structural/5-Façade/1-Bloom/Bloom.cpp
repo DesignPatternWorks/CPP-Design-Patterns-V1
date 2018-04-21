@@ -6,6 +6,7 @@
 using namespace std;
 
 int main() {
+  // Console is a façade for Windows, Viewports, Buffers,... used by the terminal app
   auto window = Console::instance().multicolumn("Test", 2, 40, 40);
 
   for (size_t i = 0; i < 40; i++) {
@@ -13,5 +14,6 @@ int main() {
   }
 
   window->Show();
+
   return 0;
 }

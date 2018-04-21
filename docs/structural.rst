@@ -181,3 +181,161 @@ Improved Decorator
    :end-before: return 0
 
 `Full source code improvedDecorator.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/4-Decorator/4-UsabilityImprovements/improvedDecorator.cpp>`_
+
+Façade
+^^^^^^
+
+Definition of Façade: Provides a simple, easy to understand/use interface over a large and sophisticated body of code.
+
+* Balancing complexity and presentation/usability.
+* Typical home:
+
+  * Many subsystems (electrical, sanitation).
+  * Complex internal structure (e.g. floor layers).
+  * End user not exposed to internals.
+
+* Same with software!
+
+  * Many systems working together provide flexibility, but...
+  * API consumers want it to 'just work'.
+
+* Make a library easier to understand, use and test.
+* Reduce dependencies of user code on internal APIs that may change.
+
+  * Allows more flexibility in developing/refactoring the library.
+
+* Wrap a poorly designed collection of APIs with a single well-designed API.
+* Build a Façade to provide a simplified API over a set of classes.
+* May wish to (optionally) expose internals though the façade.
+* May allow users to ‘escalate’ to use more complex APIs if they need to.
+
+Bloom Terminal
+""""""""""""""
+
+.. literalinclude:: ../2-Structural/5-Façade/1-Bloom/Bloom.cpp
+   :language: cpp
+   :caption: Bloom.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code Bloom.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/5-Façade/1-Bloom/Bloom.cpp>`_
+
+Flyweight
+^^^^^^^^^
+
+Definition of Flyweight: A space optimization technique that lets us use less memory by storing externally the data associated with similar objects.
+
+* Avoiding redundancy when storing data, e.g. MMORPG:
+
+  * Plenty of users with identical first/last names
+  * No sense in storing same first/last name over and over again
+  * Store a list of names and pointers to them
+
+* Bold or italic text in the console:
+
+  * Don't want each character to have an extra formatting character.
+  * Operate on ranges (e.g. line, start/end).
+
+First/Last Name
+"""""""""""""""
+
+.. literalinclude:: ../2-Structural/6-Flyweight/flyweight.cpp
+   :language: cpp
+   :caption: flyweight.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code flyweight.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/6-Flyweight/flyweight.cpp>`_
+
+Null Object
+^^^^^^^^^^^
+
+Definition of Null Object: A no-op object that satisfies the dependency requirement of some other object.
+
+* When component A uses component B, if typically assumes that B is actually present.
+
+  * You inject B, not e.g. optional<B>.
+  * You do not inject a pointer and then check for nullptr everywhere.
+
+* There is no option of telling A not to use an instance of B.
+
+  * Its use is hard-coded.
+
+* Thus, we build a no-op, non-functioning inheritor of B and pass that into A.
+* Structural or Behavioral design pattern?
+* Inherit from the required object.
+* Implement the functions with empty bodies.
+
+  * Return default values.
+  * If those values are used, you are in trouble.
+
+* Supply an instance of the Null Object in lieu of an actual object.
+
+Null Logger
+"""""""""""
+
+.. literalinclude:: ../2-Structural/7-NullObject/nullobject.cpp
+   :language: cpp
+   :caption: nullobject.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code nullobject.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/7-NullObject/nullobject.cpp>`_
+
+Proxy
+^^^^^
+
+Definition of Proxy: A class that is functioning as an interface to a particular resource. That resource may be remote, expensive to construct, or may require logging or some other added functionality.
+
+* You are calling foo.bar().
+* This assumes that foo resides in the same process as bar.
+* What if, later on, you want to put all Foo related operations into a separate process?
+
+  * How can you avoid changing all your code?
+
+* Proxy to the rescue!
+
+  * Same interface, entirely different behavior.
+
+* This is an example for a communication proxy.
+
+  * There are many others: logging, virtual, guarding,...
+
+* How is Proxy different from Decorator?
+
+  * Proxy provides an identical interface; decorator provides an enhanced interface.
+  * Decorator typically aggregates (or has reference to) what it is decorating; proxy doesn't have to.
+  * Proxy might not even be working with a materialized object.
+
+* A proxy has the same interface as the underlying object.
+* To create a proxy, simply replicate the existing interface of an object.
+* Add relevant functionality to the redefined member functions.
+
+  * As well as constructor, destructor, etc.
+
+* Different proxies (communication, logging, caching, etc.) have completely different behaviors.
+
+
+Smart Pointer Proxy
+"""""""""""""""""""
+
+Smart pointers from the standard library don't need an explicit delete. Smart pointers are proxies for underlying raw pointers.
+
+.. literalinclude:: ../2-Structural/8-Proxy/1-SmartPointerProxy/smartPointerProxy.cpp
+   :language: cpp
+   :caption: smartPointerProxy.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code smartPointerProxy.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/8-Proxy/1-SmartPointerProxy/smartPointerProxy.cpp>`_
+
+Virtual Proxy
+"""""""""""""
+
+.. literalinclude:: ../2-Structural/8-Proxy/2-VirtualProxy/virtualProxy.cpp
+   :language: cpp
+   :caption: virtualProxy.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code virtualProxy.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/8-Proxy/2-VirtualProxy/virtualProxy.cpp>`_

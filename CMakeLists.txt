@@ -7,6 +7,7 @@ find_package(glfw3)
 find_package(Freetype)
 find_package(OpenGL)
 find_package(GLEW)
+find_package(Threads)
 
 # message(STATUS "GLFW: ${GLFW_INCLUDE_DIRS}")
 # get_cmake_property(_variableNames VARIABLES)
@@ -149,6 +150,25 @@ target_include_directories(BloomTerminal PUBLIC ${FREETYPE_INCLUDE_DIR_ft2build}
 target_link_libraries(BloomTerminal glfw ${FREETYPE_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 target_compile_features(BloomTerminal PUBLIC cxx_std_14)
 
+# Flyweight
+
+add_executable(Flyweight ${CMAKE_SOURCE_DIR}/2-Structural/6-Flyweight/flyweight.cpp)
+target_include_directories(Flyweight PUBLIC ${Boost_INCLUDE_DIRS})
+target_link_libraries(Flyweight ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_compile_features(Flyweight PUBLIC cxx_std_14)
+
+# Null Object
+add_executable(NullObject ${CMAKE_SOURCE_DIR}/2-Structural/7-NullObject/nullobject.cpp)
+target_include_directories(NullObject PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(NullObject PUBLIC cxx_std_14)
+
+# Proxy
+
+add_executable(SmartPointerProxy ${CMAKE_SOURCE_DIR}/2-Structural/8-Proxy/1-SmartPointerProxy/smartPointerProxy.cpp)
+target_compile_features(SmartPointerProxy PUBLIC cxx_std_14)
+
+add_executable(VirtualProxy ${CMAKE_SOURCE_DIR}/2-Structural/8-Proxy/2-VirtualProxy/virtualProxy.cpp)
+target_compile_features(VirtualProxy PUBLIC cxx_std_14)
 
 # Create compile database
 add_custom_target(compile_commands ALL)
