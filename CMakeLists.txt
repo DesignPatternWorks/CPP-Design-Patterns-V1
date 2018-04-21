@@ -2,12 +2,16 @@ cmake_minimum_required(VERSION 3.0)
 
 project(CPP-DESIGN-PATTERNS VERSION 0.0.1)
 
-find_package(Boost REQUIRED serialization)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules")
+
+find_package(Boost REQUIRED serialization system)
 find_package(glfw3)
 find_package(Freetype)
 find_package(OpenGL)
 find_package(GLEW)
 find_package(Threads)
+find_package(CppREST REQUIRED)
+find_package(OpenSSL)
 
 # message(STATUS "GLFW: ${GLFW_INCLUDE_DIRS}")
 # get_cmake_property(_variableNames VARIABLES)
@@ -169,6 +173,11 @@ target_compile_features(SmartPointerProxy PUBLIC cxx_std_14)
 
 add_executable(VirtualProxy ${CMAKE_SOURCE_DIR}/2-Structural/8-Proxy/2-VirtualProxy/virtualProxy.cpp)
 target_compile_features(VirtualProxy PUBLIC cxx_std_14)
+
+add_executable(CommunicationProxy ${CMAKE_SOURCE_DIR}/2-Structural/8-Proxy/3-CommunicationProxy/communicationProxy.cpp)
+target_include_directories(CommunicationProxy PUBLIC ${CPP_REST_INCLUDE_DIR} ${OPENSSL_INCLUDE_DIR})
+target_link_libraries(CommunicationProxy ${CPP_REST_LIBRARY} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES})
+target_compile_features(CommunicationProxy PUBLIC cxx_std_14)
 
 # Create compile database
 add_custom_target(compile_commands ALL)

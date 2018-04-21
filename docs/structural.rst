@@ -339,3 +339,14 @@ Virtual Proxy
    :end-before: return 0
 
 `Full source code virtualProxy.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/8-Proxy/2-VirtualProxy/virtualProxy.cpp>`_
+
+Communication Proxy
+"""""""""""""""""""
+
+.. literalinclude:: ../2-Structural/8-Proxy/3-CommunicationProxy/communicationProxy.cpp
+   :language: cpp
+   :caption: communicationProxy.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code communicationProxy.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/2-Structural/8-Proxy/3-CommunicationProxy/communicationProxy.cpp>`_
