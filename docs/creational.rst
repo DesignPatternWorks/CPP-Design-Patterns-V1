@@ -264,6 +264,8 @@ Definition of Singleton: A component which is instantiated only once.
 * Singetons are difficult to test
 * Consider defining singleton lifetime with a DI container
 
+Singleton Database
+""""""""""""""""""
 
 .. literalinclude:: ../1-Creational/5-Singleton/1-SingletonDatabase/SingletonDatabase.cpp
    :language: cpp

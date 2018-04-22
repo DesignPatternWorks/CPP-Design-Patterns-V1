@@ -179,6 +179,58 @@ target_include_directories(CommunicationProxy PUBLIC ${CPP_REST_INCLUDE_DIR} ${O
 target_link_libraries(CommunicationProxy ${CPP_REST_LIBRARY} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES})
 target_compile_features(CommunicationProxy PUBLIC cxx_std_14)
 
+# Behavioral Design Patterns
+# ==========================
+
+# Chain of Responsibilty
+
+add_executable(CorPointer ${CMAKE_SOURCE_DIR}/3-Behavioral/01-ChainOfResponsibility/1-PointerChain/cor_pointer.cpp)
+target_compile_features(CorPointer PUBLIC cxx_std_14)
+
+add_executable(CorBroker ${CMAKE_SOURCE_DIR}/3-Behavioral/01-ChainOfResponsibility/2-BrokerChain/cor_broker.cpp)
+target_include_directories(CorBroker PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(CorBroker PUBLIC cxx_std_14)
+
+# Command
+
+add_executable(Command ${CMAKE_SOURCE_DIR}/3-Behavioral/02-Command/command.cpp)
+target_compile_features(Command PUBLIC cxx_std_14)
+
+# Interpreter
+
+add_executable(Interpreter ${CMAKE_SOURCE_DIR}/3-Behavioral/03-Interpreter/interpreter.cpp)
+target_include_directories(Interpreter PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(Interpreter PUBLIC cxx_std_14)
+
+# Iterator
+
+add_executable(IteratorSTL ${CMAKE_SOURCE_DIR}/3-Behavioral/04-Iterator/1-IteratorSTL/iteratorSTL.cpp)
+target_compile_features(IteratorSTL PUBLIC cxx_std_14)
+
+add_executable(BinaryTreeIterator ${CMAKE_SOURCE_DIR}/3-Behavioral/04-Iterator/2-BinaryTreeIterator/binaryTreeIterator.cpp)
+target_compile_features(BinaryTreeIterator PUBLIC cxx_std_14)
+
+add_executable(IteratorFacade ${CMAKE_SOURCE_DIR}/3-Behavioral/04-Iterator/3-BoostIteratorFacade/facade.cpp)
+target_include_directories(IteratorFacade PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(IteratorFacade PUBLIC cxx_std_14)
+
+# Mediator
+
+add_executable(Chatroom
+  ${CMAKE_SOURCE_DIR}/3-Behavioral/05-Mediator/1-ChatRoom/chat.cpp
+  ${CMAKE_SOURCE_DIR}/3-Behavioral/05-Mediator/1-ChatRoom/ChatRoom.cpp
+  ${CMAKE_SOURCE_DIR}/3-Behavioral/05-Mediator/1-ChatRoom/Person.cpp)
+target_compile_features(Chatroom PUBLIC cxx_std_14)
+
+add_executable(EventBroker ${CMAKE_SOURCE_DIR}/3-Behavioral/05-Mediator/2-EventBroker/mediator.cpp)
+target_include_directories(EventBroker PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(EventBroker PUBLIC cxx_std_14)
+
+# Memento
+
+add_executable(Memento ${CMAKE_SOURCE_DIR}/3-Behavioral/06-Memento/memento.cpp)
+target_compile_features(Memento PUBLIC cxx_std_14)
+
 # Create compile database
 add_custom_target(compile_commands ALL)
 
