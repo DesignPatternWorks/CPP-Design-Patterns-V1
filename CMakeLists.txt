@@ -231,6 +231,32 @@ target_compile_features(EventBroker PUBLIC cxx_std_14)
 add_executable(Memento ${CMAKE_SOURCE_DIR}/3-Behavioral/06-Memento/memento.cpp)
 target_compile_features(Memento PUBLIC cxx_std_14)
 
+# Observer
+
+add_executable(Observer ${CMAKE_SOURCE_DIR}/3-Behavioral/07-Observer/1-BoostSignal2Observer/observer.cpp)
+target_compile_features(Observer PUBLIC cxx_std_14)
+
+add_executable(ObserverThreads ${CMAKE_SOURCE_DIR}/3-Behavioral/07-Observer/2-ThreadSafetyObserver/observer2.cpp)
+target_include_directories(ObserverThreads PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(ObserverThreads PUBLIC cxx_std_14)
+
+# State
+
+add_executable(State ${CMAKE_SOURCE_DIR}/3-Behavioral/08-State/1-HandwrittenStateMachine/basic.cpp)
+target_compile_features(State PUBLIC cxx_std_14)
+
+add_executable(StateBoostMSM ${CMAKE_SOURCE_DIR}/3-Behavioral/08-State/2-BoostStateMachine/msm.cpp)
+target_include_directories(StateBoostMSM PUBLIC ${Boost_INCLUDE_DIRS})
+target_compile_features(StateBoostMSM PUBLIC cxx_std_14)
+
+# Strategy (Policy)
+
+add_executable(StrategyStatic ${CMAKE_SOURCE_DIR}/3-Behavioral/09-Strategy/1-StaticStrategy/strategy_static.cpp)
+target_compile_features(StrategyStatic PUBLIC cxx_std_14)
+
+add_executable(StrategyDynamic ${CMAKE_SOURCE_DIR}/3-Behavioral/09-Strategy/2-DynamicStrategy/strategy_dynamic.cpp)
+target_compile_features(StrategyDynamic PUBLIC cxx_std_14)
+
 # Create compile database
 add_custom_target(compile_commands ALL)
 

@@ -293,3 +293,211 @@ Memento with Undo/Redo
    :end-before: return 0
 
 `Full source code memento.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/06-Memento/memento.cpp>`_
+
+Observer
+^^^^^^^^
+
+Definition of Observer: An observer is an object that wishes to be informed about events happening in the system, typically by providing a callback function to call when events occur. The entity generating the events is sometimes called *observable*.
+
+* We need to be informed when certain things happen
+
+  * Object’s property changes.
+  * Object does something.
+  * Some external event occurs.
+
+* We want to listen to events and be notified when they occur.
+* No built-in event functionality in C++.
+* Function pointers, std::function, OOP constructs, special libraries
+* Implementation of Observer is an intrusive approach: an observable must provide subscribe and unsubscribe functions and must have explicit notification code.
+* Special care must be taken to prevent issues in multithreaded scenarios.
+* Reentrancy is very difficult to deal with.
+* Libraries such as Boost.Signals2 provide a usable implementation of Observer.
+
+Observer with Boost Signal2
+"""""""""""""""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/07-Observer/1-BoostSignal2Observer/observer.cpp
+   :language: cpp
+   :caption: observer.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code observer.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/07-Observer/1-BoostSignal2Observer/observer.cpp>`_
+
+Thread Safety and  Observer
+"""""""""""""""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/07-Observer/2-ThreadSafetyObserver/observer2.cpp
+   :language: cpp
+   :caption: observer2.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code observer2.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/07-Observer/2-ThreadSafetyObserver/observer2.cpp>`_
+
+State
+^^^^^
+
+Definition of State: A pattern in which the object's behavior is determined by its state. An object transitions from one state to another (something needs to *trigger* the transition). A formalized construct which manages states and transitions is called a *state machine*.
+
+* Consider an ordinary telephone.
+* What you do with it depends on the state of the phone/line.
+
+  * If it's ringing or you want to make a call, you can pick it up.
+  * Phone must be off the hook to take/make a call.
+  * If you are calling someone, and it's busy, you put the handset down.
+
+* Changes in state can be explicit or in response to events (e.g. Observer).
+* Given sufficient complexity, it pays to formally define possible states and events/triggers.
+* Can define:
+
+  * State entry/exit behaviors.
+  * Action when a particular event causes a transition.
+  * Guard conditions enabling/disabling a transition.
+  * Default action when no transitions are found for an event.
+
+Handwritten State Machine
+"""""""""""""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/08-State/1-HandwrittenStateMachine/basic.cpp
+   :language: cpp
+   :caption: basic.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code basic.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/08-State/1-HandwrittenStateMachine/basic.cpp>`_
+
+Boost State Machine - MSM
+"""""""""""""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/08-State/2-BoostStateMachine/msm.cpp
+   :language: cpp
+   :caption: msm.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code msm.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/08-State/2-BoostStateMachine/msm.cpp>`_
+
+Strategy (Policy)
+^^^^^^^^^^^^^^^^^
+
+Definition of Strategy: Enables the exact behavior of a system to be selected at either *run-time (dynamic)* or *compile-time (static)*. Also known as a *policy*.
+
+* Many algorithms can be decomposed into higher-level and lower-level parts.
+* Making tea can be decomposed into:
+
+  * The process of making a hot beverage (boil water, pour into cup); and
+  * Tea-specific things (get a teabag).
+
+* The high-level algorithm can then be reused for making coffee or hot chocolate.
+
+  * Supported by beverage-specific strategies.
+
+* Define an algorithm at a high level.
+* Define the interface you expect each strategy to follow.
+* Provide for either dynamic or static(C++ templates) composition of strategy in the overall algorithm.
+
+Static Strategy
+"""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/09-Strategy/1-StaticStrategy/strategy_static.cpp
+   :language: cpp
+   :caption: strategy_static.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code strategy_static.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/09-Strategy/1-StaticStrategy/strategy_static.cpp>`_
+
+Dynamic Strategy
+""""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/09-Strategy/2-DynamicStrategy/strategy_dynamic.cpp
+   :language: cpp
+   :caption: strategy_dynamic.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code strategy_dynamic.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/09-Strategy/2-DynamicStrategy/strategy_dynamic.cpp>`_
+
+Template
+^^^^^^^^
+
+Definition of Template: Allows us to define the 'skeleton' of the algorithm, with concrete implementations defined in subclasses.
+
+* Algorithms can be decomposed into common parts and specifics.
+* Strategy pattern does this through composition
+
+  * High-level algorithm uses an interface.
+  * Concrete implementations implement the interface.
+
+* Template Method does the same thing through inheritance.
+* Define an algorithm at a high level.
+* Define constituent parts as pure virtual functions.
+* Inherit the algorithm class, providing necessary function implementations.
+
+Chess
+"""""
+
+.. literalinclude:: ../3-Behavioral/10-Template/template_method.cpp
+   :language: cpp
+   :caption: template_method.cpp
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code template_method.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/09-Strategy/2-DynamicStrategy/10-Template/template_method.cpp>`_
+
+Visitor
+^^^^^^^
+
+Definition of Visitor: A pattern where a component (visitor) is allowed to traverse the entire inheritance hierarchy. Implemented by propagating a single *visit()* function through the entire hierarchy.
+
+* Dispatch: Which function to call?
+
+  * Single dispatch: depends on name of request and type of receiver.
+  * Double dispatch: depends on name of request and type of two receivers - type of visitor and type of element being visited.
+
+* Need to define a new operation on an entire class hierarchy
+
+  * E.g. make a document model printable to HTML/Markdown.
+
+* Do not want to keep modifying every class in the hierarchy.
+* Create external component to handle the rendering.
+
+  * But avoid type checks.
+
+* Propagate a pure virtual *accept(Visitor&)* function through the entire hierarchy.
+* Create visitor (interface) with *visit(Foo&), visit(Bar&)* for each element in the hierarchy.
+* Each *accept()* simply calls *v.visit(*this)*.
+
+Static Visitor
+""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/
+   :language: cpp
+   :caption: 
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/>`_
+
+Double Dispatch
+"""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/
+   :language: cpp
+   :caption: 
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/>`_
+
+Multiple Dispatch
+"""""""""""""""""
+
+.. literalinclude:: ../3-Behavioral/
+   :language: cpp
+   :caption: 
+   :start-after: int main() {
+   :end-before: return 0
+
+`Full source code <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/>`_
