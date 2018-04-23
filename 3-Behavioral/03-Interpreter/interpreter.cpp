@@ -1,3 +1,4 @@
+#include <cassert>
 #include <cctype>
 #include <iostream>
 #include <memory>
@@ -15,9 +16,7 @@ struct Token {
 
   Token(const Type type, const string& text) : type(type), text(text) {}
 
-  friend ostream& operator<<(ostream& os, const Token& obj) {
-    return os << obj.text;
-  }
+  friend ostream& operator<<(ostream& os, const Token& obj) { return os << obj.text; }
 };
 
 struct Element {
@@ -114,6 +113,8 @@ shared_ptr<Element> parse(const vector<Token>& tokens) {
           result->rhs = element;
         i = j;
       } break;
+      case Token::rparen:
+        assert(false);
     }
   }
   return result;
