@@ -434,6 +434,7 @@ Definition of Template: Allows us to define the 'skeleton' of the algorithm, wit
 * Define an algorithm at a high level.
 * Define constituent parts as pure virtual functions.
 * Inherit the algorithm class, providing necessary function implementations.
+* Similar to GP (Generative Programming).
 
 Chess
 """""
@@ -453,7 +454,7 @@ Definition of Visitor: A pattern where a component (visitor) is allowed to trave
 
 * Dispatch: Which function to call?
 
-  * Single dispatch: depends on name of request and type of receiver.
+  * Single dispatch: depends on name of request and type of receiver. This is standard C++ behavior.
   * Double dispatch: depends on name of request and type of two receivers - type of visitor and type of element being visited.
 
 * Need to define a new operation on an entire class hierarchy
@@ -472,32 +473,32 @@ Definition of Visitor: A pattern where a component (visitor) is allowed to trave
 Static Visitor
 """"""""""""""
 
-.. literalinclude:: ../3-Behavioral/
+.. literalinclude:: ../3-Behavioral/11-Visitor/1-StaticVisitor/staticVisitor.cpp
    :language: cpp
-   :caption: 
+   :caption: staticVisitor.cpp
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/>`_
+`Full source code staticVisitor.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/11-Visitor/1-StaticVisitor/staticVisitor.cpp>`_
 
 Double Dispatch
 """""""""""""""
 
-.. literalinclude:: ../3-Behavioral/
+.. literalinclude:: ../3-Behavioral/11-Visitor/2-DoubleDispatchVisitor/dynamicVisitor.cpp
    :language: cpp
-   :caption: 
+   :caption: dynamicVisitor.cpp
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/>`_
+`Full source code dynamicVisitor.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/11-Visitor/2-DoubleDispatchVisitor/dynamicVisitor.cpp>`_
 
 Multiple Dispatch
 """""""""""""""""
 
-.. literalinclude:: ../3-Behavioral/
+.. literalinclude:: ../3-Behavioral/11-Visitor/3-MultiDispatchVisitor/multiDispatchVisitor.cpp
    :language: cpp
-   :caption: 
+   :caption: multiDispatchVisitor.cpp
    :start-after: int main() {
    :end-before: return 0
 
-`Full source code <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/>`_
+`Full source code multiDispatchVisitor.cpp <https://github.com/schmidh/CPP-Design-Patterns/blob/master/3-Behavioral/11-Visitor/3-MultiDispatchVisitor/multiDispatchVisitor.cpp>`_

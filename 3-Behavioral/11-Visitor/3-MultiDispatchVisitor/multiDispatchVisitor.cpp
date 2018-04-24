@@ -33,6 +33,7 @@ void asteroid_planet() { cout << "asteroid burns up in atmosphere\n"; }
 void asteroid_spaceship() { cout << "asteroid hits and destroys spaceship\n"; }
 void asteroid_armed_spaceship() { cout << "spaceship shoots asteroid\n"; }
 
+// Multi-dispatch implemented with a map from pair of types to function.
 map<pair<type_index, type_index>, void (*)(void)> outcomes{
     {{typeid(Spaceship), typeid(Planet)}, spaceship_planet},
     {{typeid(Asteroid), typeid(Planet)}, asteroid_planet},
@@ -63,6 +64,5 @@ int main() {
   // collide(planet, planet);
   planet.collide(planet);
 
-  getchar();
   return 0;
 }

@@ -1,9 +1,11 @@
 #pragma once
-#include <string>
 
-struct List;
-struct ListItem;
+#include <string>
+// #include "model.hpp"
+
 struct Paragraph;
+struct ListItem;
+struct List;
 
 struct Visitor {
   virtual ~Visitor() = default;

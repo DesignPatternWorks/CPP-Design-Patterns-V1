@@ -257,6 +257,22 @@ target_compile_features(StrategyStatic PUBLIC cxx_std_14)
 add_executable(StrategyDynamic ${CMAKE_SOURCE_DIR}/3-Behavioral/09-Strategy/2-DynamicStrategy/strategy_dynamic.cpp)
 target_compile_features(StrategyDynamic PUBLIC cxx_std_14)
 
+# Template
+
+add_executable(Template ${CMAKE_SOURCE_DIR}/3-Behavioral/10-Template/template_method.cpp)
+target_compile_features(Template PUBLIC cxx_std_14)
+
+# Visitor
+
+add_executable(StaticVisitor ${CMAKE_SOURCE_DIR}/3-Behavioral/11-Visitor/1-StaticVisitor/staticVisitor.cpp)
+target_compile_features(StaticVisitor PUBLIC cxx_std_14)
+
+add_executable(DoubleDispatchVisitor ${CMAKE_SOURCE_DIR}/3-Behavioral/11-Visitor/2-DoubleDispatchVisitor/dynamicVisitor.cpp)
+target_compile_features(DoubleDispatchVisitor PUBLIC cxx_std_14)
+
+add_executable(MultiDispatchVisitor ${CMAKE_SOURCE_DIR}/3-Behavioral/11-Visitor/3-MultiDispatchVisitor/multiDispatchVisitor.cpp)
+target_compile_features(MultiDispatchVisitor PUBLIC cxx_std_14)
+
 # Create compile database
 add_custom_target(compile_commands ALL)
 
